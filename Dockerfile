@@ -8,12 +8,16 @@ COPY package*.json ./
 RUN npm install
 
 # Install app dependencies from server package.json
+RUN mkdir /usr/src/app/server
 COPY server/package*.json ./server/
-RUN cd server && npm install
+RUN cd ./server && npm install
 
 # Bundle app source
 COPY . .
 
 # Run both start scripts
 CMD [ "npm", "start" ]
-CMD [ "cd", "server", "&&", "npm", "start" ]
+
+WORKDIR /usr/src/app/server
+CMD ["npm", "start"]
+
