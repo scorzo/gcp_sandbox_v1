@@ -20,10 +20,5 @@ RUN cd ./server && npm install
 COPY . .
 
 
-# Create an entrypoint script
-COPY entrypoint.sh ./entrypoint.sh
-RUN chmod +x ./entrypoint.sh
-
-# Set the entrypoint to the script
-ENTRYPOINT ["./entrypoint.sh"]
+CMD [ "npm", "start" ]
 
