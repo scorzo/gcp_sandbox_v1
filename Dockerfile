@@ -1,5 +1,9 @@
 FROM node:14-alpine
 
+# for entrypoint script
+RUN apk add bash
+
+
 # Create app directory
 WORKDIR /usr/src/app
 
@@ -15,9 +19,11 @@ RUN cd ./server && npm install
 # Bundle app source
 COPY . .
 
-# Run both start scripts
-CMD [ "npm", "start" ]
 
-WORKDIR /usr/src/app/server
-CMD ["npm", "start"]
+# Create an entrypoint script
+COPY entrypoint.sh ./entrypoint.sh
+RUN chmod +x ./entrypoint.sh
+
+# Set the entrypoint to the script
+ENTRYPOINT ["./entrypoint.sh"]
 
