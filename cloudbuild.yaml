@@ -10,9 +10,9 @@ steps:
     args:
       - build
       - '-t'
-      - gcr.io/gcp-sandbox-v1/my-app
+      - gcr.io/$_PROJECT_ID/my-app
       - .
   - name: gcr.io/cloud-builders/docker
     args:
       - push
-      - gcr.io/gcp-sandbox-v1/my-app
+      - gcr.io/$_PROJECT_ID/my-app
