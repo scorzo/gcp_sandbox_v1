@@ -16,3 +16,7 @@ steps:
     args:
       - push
       - gcr.io/$_PROJECT_ID/my-app
+  # Deploy the built app to App Engine
+  # note: App Engine expects image has app.yaml file in root specifying runtime
+  #- name: 'gcr.io/cloud-builders/gcloud'
+  #  args: ['app', 'deploy', '--image-url', 'gcr.io/$PROJECT_ID/my-image']
