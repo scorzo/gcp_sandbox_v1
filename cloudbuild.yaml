@@ -1,0 +1,18 @@
+steps:
+  - name: gcr.io/cloud-builders/npm
+    args:
+      - install
+  - name: gcr.io/cloud-builders/npm
+    args:
+      - run
+      - build
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '-t'
+      - gcr.io/todo-v1/my-app
+      - .
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - gcr.io/todo-v1/my-app
